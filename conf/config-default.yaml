@@ -1,0 +1,7 @@
+cli:
+  name: ethsuper
+
+log:
+  level: info
+  # console or json
+  format: console
