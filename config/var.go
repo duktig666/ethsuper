@@ -19,4 +19,11 @@ type Config struct {
 		Level  string
 		Format string
 	}
+
+	Eth struct {
+		Network    string
+		ElAddr     string
+		ClAddr     string
+		PrivateKey string
+	}
 }

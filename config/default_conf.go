@@ -61,7 +61,15 @@ log:
   level: info
   # console or json
   format: console
-`)
+
+eth:
+  network: mainnet
+  # ETH execution layer connection address
+  elAddr:
+  # ETH consensus layer connection address
+  clAddr:
+  # Oracle member's private key（Make enough ETH to support the GAS of transactions; without ‘0x’ prefix）
+  privateKey:`)
 
 func ConfConfigDefaultYamlBytes() ([]byte, error) {
 	return _ConfConfigDefaultYaml, nil
@@ -73,7 +81,7 @@ func ConfConfigDefaultYaml() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "../conf/config-default.yaml", size: 87, mode: os.FileMode(438), modTime: time.Unix(1683731178, 0)}
+	info := bindataFileInfo{name: "../conf/config-default.yaml", size: 352, mode: os.FileMode(438), modTime: time.Unix(1683974397, 0)}
 	a := &asset{bytes: bytes, info: info}
 	return a, nil
 }
