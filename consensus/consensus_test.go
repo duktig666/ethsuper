@@ -13,7 +13,7 @@ import (
 	"time"
 )
 
-func TestGetConsensusInfo(t *testing.T) {
+func TestGetConsensusInfo_ByLocal(t *testing.T) {
 	config.InitConfig("../conf/config-goerli.dev.yaml")
 	clAddr := config.Config.Eth.ClAddr
 	timeout := 1 * time.Minute

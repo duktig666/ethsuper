@@ -1,3 +1,5 @@
+# go test -json -v -race -timeout=30m ./...
+
 name: test
 on:
   push:
@@ -14,4 +16,4 @@ jobs:
       - uses: actions/checkout@v3
       - uses: n8maninger/action-golang-test@v1
         with:
-          args: "-race;-timeout=30m"
+          args: "-run '^(?!.*ByLocal).*$';-race;-timeout=30m"

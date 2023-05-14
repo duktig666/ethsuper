@@ -12,7 +12,7 @@ import (
 	"time"
 )
 
-func TestValidatorsByPubKey(t *testing.T) {
+func TestValidatorsByPubKey_ByLocal(t *testing.T) {
 	initClAddr()
 	b := &BeaconService{
 		BaseUrl: clAddr,

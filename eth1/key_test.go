@@ -1,9 +1,9 @@
 package eth1
 
 import (
-	"crypto/ecdsa"
 	"encoding/hex"
 	"fmt"
+	"github.com/ethereum/go-ethereum/common/hexutil"
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/stretchr/testify/require"
 	"testing"
@@ -27,12 +27,18 @@ func TestSignStr(t *testing.T) {
 	require.Equal(t, sign, out)
 }
 
-func TestGetPublicFromSecret(t *testing.T) {
-	privateKey, err := crypto.ToECDSA([]byte(""))
-	require.Nil(t, err)
-	publicKey := privateKey.Public()
-	publicKeyECDSA, ok := publicKey.(*ecdsa.PublicKey)
-	require.Equal(t, ok, true)
-	address := crypto.PubkeyToAddress(*publicKeyECDSA).Hex()
+func TestPubkeyFromPrivateKey(t *testing.T) {
+	privateKey, err := crypto.GenerateKey()
+	require.NoError(t, err)
+
+	privateKeyBytes := crypto.FromECDSA(privateKey)
+	priv := hexutil.Encode(privateKeyBytes)
+
+	address, err := AddressFromPrivateKey(priv)
+	require.NoError(t, err)
 	fmt.Println(address)
+
+	address2, err := AddressFromPrivateKey(priv[2:])
+	require.NoError(t, err)
+	require.Equal(t, address, address2)
 }

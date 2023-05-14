@@ -26,7 +26,7 @@ func newBeaconClientTest() eth2client.Service {
 	return beaconNode
 }
 
-func TestConnectToBeaconNode(t *testing.T) {
+func TestConnectToBeaconNode_ByLocal(t *testing.T) {
 	beaconNode := newBeaconClientTest()
 	require.Equal(t, "Standard (HTTP)", beaconNode.Name())
 }

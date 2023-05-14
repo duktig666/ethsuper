@@ -13,14 +13,14 @@ import (
 	"time"
 )
 
-func TestGetBeaconBlock(t *testing.T) {
+func TestGetBeaconBlock_ByLocal(t *testing.T) {
 	initClAddr()
 	b := &BeaconService{
 		BaseUrl: clAddr,
 		Timeout: 1 * time.Minute,
 	}
 
-	beaconBlock, _, err := b.BeaconBlock(context.Background(), "5435071")
+	beaconBlock, _, err := b.BeaconBlock(context.Background(), "head")
 	require.NoError(t, err)
 
 	marshal, err := json.Marshal(beaconBlock)
@@ -29,7 +29,7 @@ func TestGetBeaconBlock(t *testing.T) {
 	fmt.Printf("beaconBlock:%s\n", string(marshal))
 }
 
-func TestGetExecutionPayload(t *testing.T) {
+func TestGetExecutionPayload_ByLocal(t *testing.T) {
 	initClAddr()
 	b := &BeaconService{
 		BaseUrl: clAddr,
@@ -44,7 +44,7 @@ func TestGetExecutionPayload(t *testing.T) {
 	fmt.Printf("BlockHash:%s\n", executionPayload.BlockHash)
 }
 
-func TestGetExecutionBlock(t *testing.T) {
+func TestGetExecutionBlock_ByLocal(t *testing.T) {
 	initClAddr()
 	b := &BeaconService{
 		BaseUrl: clAddr,
