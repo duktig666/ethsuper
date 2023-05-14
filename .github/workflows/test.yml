@@ -1,4 +1,4 @@
-# go test -json -v -race -timeout=30m ./...
+# go test -skip 'ByLocal' -race  ./...
 
 name: test
 on:
@@ -16,4 +16,4 @@ jobs:
       - uses: actions/checkout@v3
       - uses: n8maninger/action-golang-test@v1
         with:
-          args: "-skip 'ByLocal';-race;-timeout=30m"
+          args: "-skip 'ByLocal';-race"
