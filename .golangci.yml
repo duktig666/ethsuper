@@ -174,3 +174,4 @@ linters:
     - wrapcheck
     - wsl
     - unused
+    - goimports
