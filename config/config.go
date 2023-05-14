@@ -12,7 +12,7 @@ import (
 )
 
 func InitConfig(configFile ...string) {
-	//viper.SetEnvKeyReplacer(strings.NewReplacer("-", "_"))
+	// viper.SetEnvKeyReplacer(strings.NewReplacer("-", "_"))
 	viper.AutomaticEnv() // read in environment variables that match
 	viper.SetConfigType("yaml")
 
@@ -26,11 +26,11 @@ func InitConfig(configFile ...string) {
 		panic(fmt.Errorf("Fatal error default config file: %s err:%+v\n", defaultConfig, err))
 	}
 
-	//viper.SetConfigFile("../conf/config-default.yaml")
+	// viper.SetConfigFile("../conf/config-default.yaml")
 	//
-	//if err := viper.ReadInConfig(); err != nil {
-	//	panic(fmt.Errorf("Fatal error default config file: %s err:%+v\n", "defaultConfig", err))
-	//}
+	// if err := viper.ReadInConfig(); err != nil {
+	//	 panic(fmt.Errorf("Fatal error default config file: %s err:%+v\n", "defaultConfig", err))
+	// }
 
 	if len(configFile) > 0 {
 		for _, s := range configFile {

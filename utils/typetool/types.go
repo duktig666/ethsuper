@@ -9,7 +9,7 @@ import (
 	"encoding/binary"
 )
 
-// IntToBytes 整形转换成字节
+// IntToBytes Integers are converted to bytes.
 func IntToBytes(n int) []byte {
 	x := int32(n)
 	bytesBuffer := bytes.NewBuffer([]byte{})
@@ -17,21 +17,21 @@ func IntToBytes(n int) []byte {
 	return bytesBuffer.Bytes()
 }
 
-// Int32ToBytes 整形转换成字节
+// Int32ToBytes Integers are converted to bytes.
 func Int32ToBytes(n int32) []byte {
 	bytesBuffer := bytes.NewBuffer([]byte{})
 	_ = binary.Write(bytesBuffer, binary.BigEndian, n)
 	return bytesBuffer.Bytes()
 }
 
-// Int64ToBytes 整形转换成字节
+// Int64ToBytes Integers are converted to bytes.
 func Int64ToBytes(n int64) []byte {
 	bytesBuffer := bytes.NewBuffer([]byte{})
 	_ = binary.Write(bytesBuffer, binary.BigEndian, n)
 	return bytesBuffer.Bytes()
 }
 
-// BytesToInt 字节转换成整形
+// BytesToInt Bytes are converted to shapes.
 func BytesToInt(b []byte) int {
 	bytesBuffer := bytes.NewBuffer(b)
 	var x int32
@@ -39,12 +39,12 @@ func BytesToInt(b []byte) int {
 	return int(x)
 }
 
-// PadByteTo 补0
+// PadByteTo Make up 0.
 func PadByteTo(n int) []byte {
 	return make([]byte, n)
 }
 
-// PadByteTo32 补0到32byte
+// PadByteTo32 Make up 0 to 32 bytes.
 func PadByteTo32(n int) []byte {
 	return make([]byte, 32-n)
 }

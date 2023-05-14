@@ -6,7 +6,7 @@ package util
 
 import "strings"
 
-// TrimLeft0x 去掉字符串左侧 0x
+// TrimLeft0x Remove 0x to the left of the string.
 func TrimLeft0x(s string) string {
 	return strings.TrimLeft(s, "0x")
 }

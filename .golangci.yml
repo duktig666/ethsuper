@@ -173,5 +173,11 @@ linters:
     - whitespace
     - wrapcheck
     - wsl
+    # customization
     - unused
     - goimports
+    - gocritic
+    - revive
+    - interfacebloat
+    - stylecheck
+    - godot

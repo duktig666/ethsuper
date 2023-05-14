@@ -57,6 +57,9 @@ func AddressFromPrivateKey(pri string) (common.Address, error) {
 		pri = fmt.Sprintf("0x%s", pri)
 	}
 	priHex, err := hexutil.Decode(pri)
+	if err != nil {
+		return common.Address{}, errors.Wrap(err, "Failed to Decode")
+	}
 	privateKey, err := crypto.ToECDSA(priHex)
 	if err != nil {
 		return common.Address{}, errors.Wrap(err, "Failed to ToECDSA")

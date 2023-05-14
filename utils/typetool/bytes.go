@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// SplitBytes Splits a byte array into a two-dimensional byte array of a given size
+// SplitBytes Splits a byte array into a two-dimensional byte array of a given size.
 func SplitBytes(buf []byte, lim int) [][]byte {
 	var chunk []byte
 	chunks := make([][]byte, 0, len(buf)/lim+1)
