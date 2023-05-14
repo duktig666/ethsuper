@@ -1,3 +1,5 @@
+# golangci-lint run
+
 name: golangci-lint
 on:
   push:
