@@ -173,3 +173,4 @@ linters:
     - whitespace
     - wrapcheck
     - wsl
+    - unused
