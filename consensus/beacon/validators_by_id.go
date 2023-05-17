@@ -33,9 +33,7 @@ func (b *BeaconService) ValidatorsByPubKey(ctx context.Context, stateID string, 
 	url := fmt.Sprintf("%s/eth/v1/beacon/states/%s/validators", b.BaseUrl, stateID)
 	if len(validatorPubKeys) != 0 {
 		ids := make([]string, len(validatorPubKeys))
-		for i := range validatorPubKeys {
-			ids[i] = validatorPubKeys[i]
-		}
+		copy(ids, validatorPubKeys)
 		url = fmt.Sprintf("%s?id=%s", url, strings.Join(ids, ","))
 	}
 	respBodyReader, err := httpTool.GetRequest(ctx, url)

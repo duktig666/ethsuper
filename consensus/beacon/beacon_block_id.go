@@ -141,7 +141,10 @@ func (b *BeaconService) ExecutionPayload(ctx context.Context, blockID string) (*
 			logger.Errorf("Failed to get execute beacon block.")
 		}
 	} else {
-		beaconBlock, isMiss, err = b.BeaconBlock(ctx, blockID)
+		beaconBlock, _, err = b.BeaconBlock(ctx, blockID)
+		if err != nil {
+			return nil, errors.Wrap(err, "")
+		}
 	}
 
 	return beaconBlock.Data.Message.Body.ExecutionPayload, nil
@@ -154,8 +157,17 @@ func (b *BeaconService) ExecutionBlock(ctx context.Context, blockID string) (*Ex
 	}
 
 	blockNumber, ok := new(big.Int).SetString(executionPayload.BlockNumber, 10)
+	if !ok {
+		return nil, errors.New("Failed string to big.Int")
+	}
 	gasLimit, ok := new(big.Int).SetString(executionPayload.GasLimit, 10)
+	if !ok {
+		return nil, errors.New("Failed string to big.Int")
+	}
 	baseFeePerGas, ok := new(big.Int).SetString(executionPayload.BaseFeePerGas, 10)
+	if !ok {
+		return nil, errors.New("Failed string to big.Int")
+	}
 	gasUsed, ok := new(big.Int).SetString(executionPayload.GasUsed, 10)
 	if !ok {
 		return nil, errors.New("Failed string to big.Int")

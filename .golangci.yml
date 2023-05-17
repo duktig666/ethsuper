@@ -181,3 +181,8 @@ linters:
     - interfacebloat
     - stylecheck
     - godot
+    - unparam
+    - gosec
+    - nestif
+    - nakedret
+    - nonamedreturns

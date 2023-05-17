@@ -23,14 +23,16 @@ type RSASecurity struct {
 }
 
 // SetPublicKey set public key
-func (rsas *RSASecurity) SetPublicKey(pubStr string) (err error) {
+func (rsas *RSASecurity) SetPublicKey(pubStr string) error {
+	var err error
 	rsas.pubStr = pubStr
 	rsas.pubkey, err = rsas.PublicKey()
 	return err
 }
 
 // SetPrivateKey set private key
-func (rsas *RSASecurity) SetPrivateKey(priStr string) (err error) {
+func (rsas *RSASecurity) SetPrivateKey(priStr string) error {
+	var err error
 	rsas.priStr = priStr
 	rsas.privateKey, err = rsas.PrivateKey()
 	return err

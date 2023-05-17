@@ -234,6 +234,7 @@ func encrypt(c *big.Int, pub *rsa.PublicKey, m *big.Int) *big.Int {
 	return c
 }
 
+//nolint:golint
 func decrypt(random io.Reader, priv *rsa.PrivateKey, c *big.Int) (m *big.Int, err error) {
 	if c.Cmp(priv.N) > 0 {
 		err = ErrDecryption
