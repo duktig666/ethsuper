@@ -17,8 +17,6 @@ type EthClient struct {
 	Client *ethclient.Client
 }
 
-var ElClient *EthClient
-
 func NewEthClient(ctx context.Context, rpcHost string) (*EthClient, error) {
 	elClient, err := getEthClient(ctx, rpcHost)
 	if err != nil {

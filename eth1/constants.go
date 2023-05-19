@@ -14,6 +14,7 @@ const (
 	MAINNET = "mainnet"
 	GOERLI  = "goerli"
 	PRATER  = "prater"
+	SEPOLIA = "sepolia"
 )
 
 var ZERO_HASH = [32]byte{}
