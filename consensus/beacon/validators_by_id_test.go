@@ -15,8 +15,8 @@ import (
 func TestValidatorsByPubKey_ByLocal(t *testing.T) {
 	initClAddr()
 	b := &BeaconService{
-		BaseUrl: clAddr,
-		Timeout: 1 * time.Minute,
+		baseUrl: clAddr,
+		timeout: 1 * time.Minute,
 	}
 
 	validatorMap, err := b.ValidatorsByPubKey(context.Background(), "head", []string{

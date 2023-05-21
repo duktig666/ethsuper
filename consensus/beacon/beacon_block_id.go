@@ -12,8 +12,8 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"github.com/NodeDAO/oracle-go/common/logger"
-	"github.com/NodeDAO/oracle-go/utils/httptool"
+	"github.com/duktig666/ethsuper/common/logger"
+	"github.com/duktig666/ethsuper/utils/httptool"
 	"math/big"
 	//"github.com/attestantio/go-eth2-client/api/v1/capella"
 	"github.com/pkg/errors"
@@ -96,12 +96,12 @@ type ExecutionBlock struct {
 }
 
 func (b *BeaconService) BeaconBlock(ctx context.Context, blockID string) (*BeaconBlock, bool, error) {
-	httpTool, err := httptool.New(ctx, b.Timeout)
+	httpTool, err := httptool.New(ctx, b.timeout)
 	if err != nil {
 		return nil, false, errors.Wrap(err, "")
 	}
 
-	respBodyReader, err := httpTool.GetRequest(ctx, fmt.Sprintf("%s/eth/v2/beacon/blocks/%s", b.BaseUrl, blockID))
+	respBodyReader, err := httpTool.GetRequest(ctx, fmt.Sprintf("%s/eth/v2/beacon/blocks/%s", b.baseUrl, blockID))
 	if err != nil {
 		return nil, false, errors.Wrap(err, "failed to request beacon block header")
 	}

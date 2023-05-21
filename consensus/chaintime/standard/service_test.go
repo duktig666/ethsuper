@@ -2,9 +2,9 @@ package standard_test
 
 import (
 	"context"
-	"github.com/NodeDAO/oracle-go/consensus/chaintime"
-	"github.com/NodeDAO/oracle-go/consensus/chaintime/mock"
-	"github.com/NodeDAO/oracle-go/consensus/chaintime/standard"
+	"github.com/duktig666/ethsuper/consensus/chaintime"
+	"github.com/duktig666/ethsuper/consensus/chaintime/mock"
+	"github.com/duktig666/ethsuper/consensus/chaintime/standard"
 	"testing"
 	"time"
 

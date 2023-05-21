@@ -3,7 +3,6 @@ module github.com/duktig666/ethsuper
 go 1.20
 
 require (
-	github.com/NodeDAO/oracle-go v0.0.7
 	github.com/attestantio/go-eth2-client v0.16.3
 	github.com/ethereum/go-ethereum v1.11.6
 	github.com/fatih/color v1.15.0

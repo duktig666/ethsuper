@@ -16,8 +16,8 @@ import (
 func TestGetBeaconBlock_ByLocal(t *testing.T) {
 	initClAddr()
 	b := &BeaconService{
-		BaseUrl: clAddr,
-		Timeout: 1 * time.Minute,
+		baseUrl: clAddr,
+		timeout: 1 * time.Minute,
 	}
 
 	beaconBlock, _, err := b.BeaconBlock(context.Background(), "head")
@@ -32,8 +32,8 @@ func TestGetBeaconBlock_ByLocal(t *testing.T) {
 func TestGetExecutionPayload_ByLocal(t *testing.T) {
 	initClAddr()
 	b := &BeaconService{
-		BaseUrl: clAddr,
-		Timeout: 1 * time.Minute,
+		baseUrl: clAddr,
+		timeout: 1 * time.Minute,
 	}
 
 	executionPayload, err := b.ExecutionPayload(context.Background(), "head")
@@ -47,8 +47,8 @@ func TestGetExecutionPayload_ByLocal(t *testing.T) {
 func TestGetExecutionBlock_ByLocal(t *testing.T) {
 	initClAddr()
 	b := &BeaconService{
-		BaseUrl: clAddr,
-		Timeout: 1 * time.Minute,
+		baseUrl: clAddr,
+		timeout: 1 * time.Minute,
 	}
 
 	executionBlock, err := b.ExecutionBlock(context.Background(), "5354527")

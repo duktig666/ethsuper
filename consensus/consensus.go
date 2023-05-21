@@ -6,18 +6,18 @@ package consensus
 
 import (
 	"context"
-	"github.com/NodeDAO/oracle-go/consensus/beacon"
-	"github.com/NodeDAO/oracle-go/consensus/chaintime/standard"
 	eth2client "github.com/attestantio/go-eth2-client"
+	"github.com/duktig666/ethsuper/consensus/beacon"
+	"github.com/duktig666/ethsuper/consensus/chaintime/standard"
 	"github.com/pkg/errors"
 	"github.com/rs/zerolog"
 	"time"
 )
 
 type Consensus struct {
-	ConsensusClient        *eth2client.Service
+	ConsensusClient        eth2client.Service
 	ChainTimeService       *standard.Service
-	CustomizeBeaconService *beacon.BeaconService
+	CustomizeBeaconService beacon.BeaconProvider
 
 	Timeout time.Duration
 }
@@ -43,7 +43,7 @@ func New(ctx context.Context, addr string, timeout time.Duration) (*Consensus, e
 	}
 
 	return &Consensus{
-		ConsensusClient:        &beaconNode,
+		ConsensusClient:        beaconNode,
 		ChainTimeService:       chainTimeService,
 		CustomizeBeaconService: beaconService,
 		Timeout:                timeout,
