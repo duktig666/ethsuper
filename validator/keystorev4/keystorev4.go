@@ -84,6 +84,10 @@ func (k *KeystoreV4) Decrypt(pass string) ([]byte, error) {
 	encryptor := SwitchEncryptor(k)
 
 	marshal, err := json.Marshal(k.Crypto)
+	if err != nil {
+		return nil, errors.Wrap(err, "keystore Marshal err.")
+	}
+
 	var cryptoMap map[string]interface{}
 	err = json.Unmarshal(marshal, &cryptoMap)
 	if err != nil {
@@ -136,6 +140,9 @@ func GenerateKeystoreV4(pass string) (*KeystoreV4, error) {
 // GenerateKeystoreV4FromPrivateKey Generate keystoreV4 from the private key
 func GenerateKeystoreV4FromPrivateKey(privateKey []byte, pass string) (*KeystoreV4, error) {
 	blsPrivateKey, err := e2types.BLSPrivateKeyFromBytes(privateKey)
+	if err != nil {
+		return nil, errors.Wrap(err, "BLSPrivateKeyFromBytes err.")
+	}
 
 	pubkey := hex.EncodeToString(blsPrivateKey.PublicKey().Marshal())
 
