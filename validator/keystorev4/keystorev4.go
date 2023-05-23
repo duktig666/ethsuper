@@ -65,14 +65,6 @@ func (k *KeystoreV4) Marshal() ([]byte, error) {
 	return json.Marshal(k)
 }
 
-func (k *KeystoreV4) Unmarshal(input []byte) error {
-	err := json.Unmarshal(input, k)
-	if err != nil {
-		return errors.Wrap(err, "json Unmarshal err.")
-	}
-	return nil
-}
-
 func (k *KeystoreV4) String() (string, error) {
 	data, err := k.Marshal()
 	return string(data), err
@@ -183,7 +175,7 @@ func GenerateKeystoreV4FromPrivateKey(privateKey []byte, pass string) (*Keystore
 // DecryptFromJson Decrypt KeystoreV4 json str
 func DecryptFromJson(keystoreV4Str string, pass string) ([]byte, error) {
 	var keystore *KeystoreV4
-	err := keystore.Unmarshal([]byte(keystoreV4Str))
+	err := json.Unmarshal([]byte(keystoreV4Str), &keystore)
 	if err != nil {
 		return nil, errors.Wrap(err, "The keystore JSON str format does not conform to err.")
 	}

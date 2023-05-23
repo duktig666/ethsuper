@@ -5,6 +5,7 @@
 package keystorev4
 
 import (
+	e2types "github.com/wealdtech/go-eth2-types/v2"
 	encryptorKeystore "github.com/wealdtech/go-eth2-wallet-encryptor-keystorev4"
 )
 
@@ -15,6 +16,11 @@ var (
 )
 
 func init() {
+	err := e2types.InitBLS()
+	if err != nil {
+		panic("InitBLS err.")
+	}
+
 	Pbkdf2Encryptor = encryptorKeystore.New()
 	ScryptEncryptor = encryptorKeystore.New(encryptorKeystore.WithCipher("scrypt"))
 }
