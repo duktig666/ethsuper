@@ -53,6 +53,11 @@ var rootCmd = &cobra.Command{
 	},
 }
 
+func persistentPreRunE(cmd *cobra.Command, _ []string) error {
+
+	return nil
+}
+
 func tip() {
 	usageStr := `Welcome to use ` + cliName + `:` + ` use ` + cliName + ` -h` + ` see cli`
 	usageStr1 := `You can also refer to the related content of https://github.com/duktig666/ethsuper`

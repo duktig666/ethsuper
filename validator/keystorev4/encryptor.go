@@ -38,7 +38,8 @@ func init() {
 	ScryptEncryptor = encryptorKeystore.New(encryptorKeystore.WithCipher("scrypt"))
 }
 
-// SwitchEncryptor Switch KeystoreV4 Encryptor
+// SwitchEncryptor Switch KeystoreV4 Encryptor.
+// Default pbkdf2: less resource consumption, wider usage.
 func SwitchEncryptor(keystore *KeystoreV4) *encryptorKeystore.Encryptor {
 	var encryptor *encryptorKeystore.Encryptor
 	switch keystore.Crypto.KDF.Function {
