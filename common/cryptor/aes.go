@@ -46,7 +46,7 @@ func AesEncryptByECBBase64(data, key string) string {
 	// 判断key长度
 	keyLenMap := map[int]struct{}{16: {}, 24: {}, 32: {}}
 	if _, ok := keyLenMap[len(key)]; !ok {
-		panic("key长度必须是 16、24、32 其中一个")
+		panic("The key length must be 16, 24, 32 or one")
 	}
 	// 密钥和待加密数据转成[]byte
 	originByte := []byte(data)
@@ -75,7 +75,7 @@ func AesDecryptByECBBase64(data, key string) string {
 	// 判断key长度
 	keyLenMap := map[int]struct{}{16: {}, 24: {}, 32: {}}
 	if _, ok := keyLenMap[len(key)]; !ok {
-		panic("key长度必须是 16、24、32 其中一个")
+		panic("The key length must be 16, 24, 32 or one")
 	}
 	// 反解密码base64
 	originByte, _ := base64.StdEncoding.DecodeString(data)
@@ -103,7 +103,7 @@ func AesEncryptByECB(data, key []byte) []byte {
 	// 判断key长度
 	keyLenMap := map[int]struct{}{16: {}, 24: {}, 32: {}}
 	if _, ok := keyLenMap[len(key)]; !ok {
-		panic("key长度必须是 16、24、32 其中一个")
+		panic("The key length must be 16, 24, 32 or one")
 	}
 	// 密钥和待加密数据转成[]byte
 	originByte := data
@@ -133,7 +133,7 @@ func AesDecryptByECB(data, key []byte) []byte {
 	// 判断key长度
 	keyLenMap := map[int]struct{}{16: {}, 24: {}, 32: {}}
 	if _, ok := keyLenMap[len(key)]; !ok {
-		panic("key长度必须是 16、24、32 其中一个")
+		panic("The key length must be 16, 24, 32 or one")
 	}
 	// 反解密码base64
 	//originByte, _ := base64.StdEncoding.DecodeString(data)

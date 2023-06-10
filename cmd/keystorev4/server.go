@@ -32,7 +32,7 @@ var (
 
 		},
 		Run: func(cmd *cobra.Command, args []string) {
-			Run(cmd)
+			//Run(cmd)
 		},
 	}
 )
@@ -40,4 +40,5 @@ var (
 // Run runs the command.
 func Run(cmd *cobra.Command) (string, error) {
 
+	return "", nil
 }
