@@ -188,3 +188,4 @@ linters:
     - nonamedreturns
     - depguard
     - tagalign
+    - godox # todo

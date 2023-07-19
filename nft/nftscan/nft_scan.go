@@ -46,6 +46,9 @@ func NewNFTScan(ctx context.Context, elRpc string) (*NFTScan, error) {
 	}
 
 	chainID, err := ethClient.Client.ChainID(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "ChainID err.")
+	}
 	return &NFTScan{
 		ethClient: ethClient,
 		chainID:   chainID,
@@ -133,9 +136,6 @@ func (v *NFTScan) analyzeContractDeployTx(ctx context.Context, tx *types.Transac
 			if err != nil {
 				return errors.Wrapf(err, "recordErc721 err. contractAddress:%s txHash:%s", receipt.ContractAddress.Hex(), tx.Hash().String())
 			}
-			break
-		case Unknown:
-			break
 		}
 	}
 

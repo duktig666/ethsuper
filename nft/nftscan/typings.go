@@ -21,7 +21,7 @@ package nftscan
 
 type NFTContract struct {
 	ID               int64   `gorm:"primary key ; auto increment" json:"id"`
-	NftContractHash  string  `json:"nftContractHash"`
+	NftContractHash  string  `json:"nft_contract_hash"`
 	CollectionName   string  `json:"collection_name"`
 	CollectionSymbol string  `json:"collection_symbol"`
 	TransactionHash  string  `json:"transaction_hash"`
@@ -29,46 +29,46 @@ type NFTContract struct {
 	BlockHeight      uint64  `json:"block_height"` // 发现块高
 	CreateTime       int64   `json:"create_time"`
 	ErcType          string  `json:"erc_type"`
-	LowestPrice24h   float64 `json:"lowestPrice24H"`
-	HighestPrice24h  float64 `json:"highestPrice24H"`
-	AveragePrice24h  float64 `json:"averagePrice24H"`
-	Volume24h        float64 `json:"volume24H"`
-	VolumeTotal      float64 `json:"volumeTotal"`
+	LowestPrice24h   float64 `json:"lowest_price_24h"`
+	HighestPrice24h  float64 `json:"highest_price_24h"`
+	AveragePrice24h  float64 `json:"average_price_24h"`
+	Volume24h        float64 `json:"volume_24h"`
+	VolumeTotal      float64 `json:"volume_total"`
 }
 
 type NFTAsset struct {
 	ID                  int64  `gorm:"primary key ; auto increment" json:"id"`
-	NftAssetId          string `json:"nftAssetId"`
-	NftContractHash     string `json:"nftContractHash"`
-	MintTransactionHash string `json:"mintTransactionHash"`
-	MintBlockHeight     uint64 `json:"mintBlockHeight"`
-	MintTimeStamp       uint64 `json:"mintTimeStamp"`
+	NftAssetId          string `json:"nft_asset_id"`
+	NftContractHash     string `json:"nft_contract_hash"`
+	MintTransactionHash string `json:"mint_transaction_hash"`
+	MintBlockHeight     uint64 `json:"mint_block_height"`
+	MintTimeStamp       uint64 `json:"mint_time_stamp"`
 	Creator             string `json:"creator"` // 发现块高
 	Holder              string `json:"holder"`
-	ImageUrl            string `json:"imageUrl"`
+	ImageUrl            string `json:"image_url"`
 	Format              string `json:"format"`
 	// todo burn
 }
 
 type NFTTransaction struct {
 	ID                   int64   `gorm:"primary key ; auto increment" json:"id"`
-	TransactionHash      string  `json:"transactionHash"`
-	BlockHeight          uint64  `json:"blockHeight"`
-	TimeStamp            uint64  `json:"timeStamp"`
+	TransactionHash      string  `json:"transaction_hash"`
+	BlockHeight          uint64  `json:"block_height"`
+	TimeStamp            uint64  `json:"timestamp"`
 	From                 string  `json:"from"`
 	To                   string  `json:"to"`
 	Value                uint64  `json:"value"` // 发现块高
-	GasPrice             uint64  `json:"gasPrice"`
-	GasLimit             uint64  `json:"gasLimit"`
-	GasUsedByTransaction uint64  `json:"gasUsedByTransaction"`
-	TransactionFee       float64 `json:"transactionFee"`
+	GasPrice             uint64  `json:"gas_price"`
+	GasLimit             uint64  `json:"gas_limit"`
+	GasUsedByTransaction uint64  `json:"gas_used_by_transaction"`
+	TransactionFee       float64 `json:"transaction_fee"`
 }
 
 type NFTTransfer struct {
 	ID              int64  `gorm:"primary key ; auto increment" json:"id"`
-	NFTContractHash string `json:"NFTContractHash"`
-	NFTAssetId      string `json:"NFTAssetId"`
-	TransactionHash string `json:"transactionHash"`
+	NFTContractHash string `json:"nft_contract_hash"`
+	NFTAssetId      string `json:"nft_asset_id"`
+	TransactionHash string `json:"transaction_hash"`
 	From            string `json:"from"`
 	To              string `json:"to"`
 	Type            string `json:"type"`
