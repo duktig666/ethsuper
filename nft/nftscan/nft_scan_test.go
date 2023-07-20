@@ -37,8 +37,8 @@ func TestNFTScan_ScanNFT(t *testing.T) {
 	nftScan, err := NewNFTScan(ctx, config.GlobalConfig.Eth.ElAddr)
 	require.NoError(t, err)
 
-	startNumber := big.NewInt(17718800)
-	endNumber := big.NewInt(17719800)
+	startNumber := big.NewInt(16683905)
+	endNumber := big.NewInt(16683920)
 	err = nftScan.ScanNFT(ctx, startNumber, endNumber)
 	require.NoError(t, err)
 }

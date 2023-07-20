@@ -194,7 +194,66 @@ func checkType(from string, to string) string {
 
 
 
+## NFT Matadata
 
+```solidity
+/**
+  * @dev Returns the Uniform Resource Identifier (URI) for `tokenId` token.
+  */
+function tokenURI(uint256 tokenId) external view returns (string memory);
+```
+
+`tokenURI()`方法返回指定 NFT 的 Metadata URI。Metadata URI 是一个指向包含有关 NFT 信息的 JSON 文件的 URL。
+
+元数据扩展对于ERC-721智能合约是可选的（请参阅下面的“注意事项”）。这允许您的智能合约被询问其名称以及有关您的 NFT 所代表的资产的详细信息:
+
+```solidity
+/// @title ERC-721 Non-Fungible Token Standard, optional metadata extension
+/// @dev See https://eips.ethereum.org/EIPS/eip-721
+///  Note: the ERC-165 identifier for this interface is 0x5b5e139f.
+interface ERC721Metadata /* is ERC721 */ {
+    /// @notice A descriptive name for a collection of NFTs in this contract
+    function name() external view returns (string _name);
+
+    /// @notice An abbreviated name for NFTs in this contract
+    function symbol() external view returns (string _symbol);
+
+    /// @notice A distinct Uniform Resource Identifier (URI) for a given asset.
+    /// @dev Throws if `_tokenId` is not a valid NFT. URIs are defined in RFC
+    ///  3986. The URI may point to a JSON file that conforms to the "ERC721
+    ///  Metadata JSON Schema".
+    function tokenURI(uint256 _tokenId) external view returns (string);
+}
+```
+
+一般Metadata JSON的值：
+
+```json
+{
+    "title": "Asset Metadata",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "Identifies the asset to which this NFT represents"
+        },
+        "description": {
+            "type": "string",
+            "description": "Describes the asset to which this NFT represents"
+        },
+        "image": {
+            "type": "string",
+            "description": "A URI pointing to a resource with mime type image/* representing the asset to which this NFT represents. Consider making any images at a width between 320 and 1080 pixels and aspect ratio between 1.91:1 and 4:5 inclusive."
+        }
+    }
+}
+```
+
+eg:
+
+- Contract: https://etherscan.io/address/0x49c36afa15c7fdbd57ce3d61d80f39b6615a76ef#readContract
+
+-  [https://invisiblefriends.io/api/metadata/3d/1](https://invisiblefriends.io/api/metadata/3d/1)
 
 
 
