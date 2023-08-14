@@ -15,30 +15,27 @@
 
 // description:
 // @author renshiwei
-// Date: 2023/7/18
+// Date: 2023/8/14
 
-package nftscan
+package eth1
 
 import (
 	"context"
-	"github.com/duktig666/ethsuper/common/logger"
-	"github.com/duktig666/ethsuper/config"
+	"github.com/ethereum/go-ethereum/common"
 	"github.com/stretchr/testify/require"
-	"math/big"
 	"testing"
 )
 
-func TestNFTScan_ScanNFT(t *testing.T) {
-	var err error
+func TestEthClient_AddressType_ByLocal(t *testing.T) {
 	ctx := context.Background()
-	config.InitConfig("../../conf/config-mainnet.dev.yaml")
-	logger.InitLog("debug", "console")
-
-	nftScan, err := NewNFTScan(ctx, config.GlobalConfig.Eth.ElAddr)
+	client, err := NewEthClient(ctx, "https://rpc.ankr.com/eth")
 	require.NoError(t, err)
 
-	startNumber := big.NewInt(16683911)
-	endNumber := big.NewInt(16683920)
-	err = nftScan.ScanNFT(ctx, startNumber, endNumber)
+	addressType, err := client.AddressType(ctx, common.HexToAddress("0x892e7c8C5E716e17891ABf9395a0de1f2fc84786"))
 	require.NoError(t, err)
+	require.Equal(t, EOA, addressType)
+
+	addressType2, err := client.AddressType(ctx, common.HexToAddress("0x58553F5c5a6AEE89EaBFd42c231A18aB0872700d"))
+	require.NoError(t, err)
+	require.Equal(t, CONTRACT, addressType2)
 }

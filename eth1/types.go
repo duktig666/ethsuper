@@ -17,10 +17,36 @@
 
 package eth1
 
+import (
+	"context"
+	"github.com/ethereum/go-ethereum/common"
+	"github.com/pkg/errors"
+)
+
 type Tx struct {
 	From    string `json:"from,omitempty"`
 	To      string `json:"to"`
 	Value   string `json:"value"`
 	Data    string `json:"data"`
 	ChainId int    `json:"chain_id"`
+}
+
+type AddressType uint8
+
+const (
+	EOA AddressType = iota
+	CONTRACT
+)
+
+func (e *EthClient) AddressType(ctx context.Context, address common.Address) (AddressType, error) {
+	code, err := e.Client.CodeAt(ctx, address, nil)
+	if err != nil {
+		return EOA, errors.Wrapf(err, "Fail to get balance address:%s", address)
+	}
+
+	if len(code) == 0 {
+		return EOA, nil
+	}
+
+	return CONTRACT, nil
 }
