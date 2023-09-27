@@ -50,3 +50,7 @@ func TestDecimalForBigInt(t *testing.T) {
 	fmt.Println(decimal.NewFromBigInt(big.NewInt(111), 0).String())
 	fmt.Println(decimal.NewFromBigInt(big.NewInt(111), 1).String())
 }
+
+func TestTime(t *testing.T){
+	fmt.Println(time.Now())
+}
